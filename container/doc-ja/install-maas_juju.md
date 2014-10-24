@@ -107,12 +107,18 @@ nova-computeノードを除いて、サーバの必要台数を減らすため�
 ```console
 $ vi /etc/network/interfaces
 ```
+次に、libvirtの環境を構築します。
 
 ```console
 $ sudo apt-get install qemu-kvm libvirt-bin virtinst
 $ exit ; login
   (再ログイン)
-$ ./setup-vmnet.sh
+```
+次にVMを作成してPXEブートさせ、MAAS server に enlistします。
+
+```console
+$ for i in {0..9}; do sudo ./deploy-vm.sh vm${i}; done
+$ virsh console 
 ```
 
 ***
@@ -138,3 +144,6 @@ kernel parameter に meiドライバのブラックリスト登録をしても
 [   42.496220] mei_me 0000:00:16.0: init hw failure.
 ```
 
+- 確認Version
+  - Bare Metal OS: Ubuntu14.04.1LTS
+  - MAAS: 1.5.4
