@@ -30,8 +30,7 @@ MAC_RAND2=`perl -e 'for ($i=0;$i<5;$i++){@m[$i]=int(rand(256));} printf "02:%X:%
 sudo virt-install --connect qemu:///system -n ${HOST_NAME} -r ${RAM_SIZE} \
         --arch=x86_64 --pxe \
         --vcpus=${CPU_NUM} \
-        --network=network:management,mac=${MAC_RAND1} \
-        --network=network:data,mac=${MAC_RAND2} \
+        --network=bridge=br0,mac=${MAC_RAND1} \
         --boot network \
         --vnc --accelerate \
         --disk=/var/lib/libvirt/images/${HOST_NAME}.img,size=8 \
