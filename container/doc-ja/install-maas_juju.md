@@ -129,6 +129,7 @@ Juju Bootstrap node のインストール
 ***
 # Known Issues
 ## meiドライバの初期化に失敗してシステムが停止してしまうことがある
+Quanta F03Cで本現象を確認。Wiwynn Winterfellでは本現象は起こらない模様です。
 MAAS の commissionプロセス中で 1/3 程度の確率で発生する模様です。
 不具合発生時は下記のような log がコンソールに出力されます。
 kernel parameter に meiドライバのブラックリスト登録をしても
